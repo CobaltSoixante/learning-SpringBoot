@@ -27,13 +27,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * This is a web-application. Spring-boot seems to have given me "Tomcat" as a default server/servlet-server,
  * that opens a port on 8080.
  *
- * This entire course gives ALL the Java basics - except the frontend/HTML client - for that us postgreSQL &/or POSTAMAN: I used POSTMAN.
- * (if I were using Intellij "ultimate" edition I wouldn't need POSTMAN, but "ultimate" costs money past the tria -
+ * This entire course gives ALL the Java basics - except the frontend/HTML client - for that us postgreSQL &/or POSTMAN: I used POSTMAN.
+ * (if I were using Intellij "ultimate" edition I wouldn't need POSTMAN, but "ultimate" costs money past the trial -
  * and I already have POSTMAN "know-how", and installed on my computer).
+ * HOWEVER, note: on Jan 2022 I am noticing changes: must stick with Postman V6: V7 and above are TEAM versions that require payment.
  *
  * This springboot based app only only happens to be a web[server] app.
  * In "spring initializr" springboot repository we select the following 3 components to correspond to a N-tier webapp:
- * (1) Spring Web (with Tomcat based Java servlet server as default, which also provides REST (GET/PUT/UPDATE/DELETE) functionality)
+ * (1) Spring Web (with Tomcat based Java servlet server as default, which also provides REST (GET/PUT(update)/POST(add)/DELETE) functionality)
  * w. MVC (N-Tier classes: @RestController, @Service, @Repository).
  * IE our CLASSES StudentController/Service/Repository classes AND
  * in the StudentController class - METHODS for: @GetMapping/PutMapping/UpdateMapping/DeleteMapping
@@ -63,7 +64,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Autowired - am working this out: seems to imply that this bean should be instantiated BY-TYPE/DEFAULT, without need for the 'new' keyword - just like scalars.
  *
  * N-tier architecture:
- * API layer ( GET(=SELECT) POST(=INSERT) PUT(=UPDATE) DELETE(=DELETE) )
+ * API layer ( GET(=SELECT) PUT(=UPDATE) POST(=INSERT) DELETE(=DELETE) )
  * Service Layer
  * Data Access Layer
  *
