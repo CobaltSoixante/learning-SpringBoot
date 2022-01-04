@@ -53,7 +53,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Spring/annotation JPA takeaways / N-TIER layer:
  *
  * @RestController on StudentController - implies this is the API layer, providing interfaces [= Restful nouns]:
- * GET (get existing records/resources), PUT (update records), POST (save new records/resources), DELETE (delete records).
+ * GET (get existing records/resources), PUT (update records), POST (save/ADD new records/resources), DELETE (delete records).
  * @RequestMapping on StudentController - implies additional path mapping to URL, IE localhost:8080/additional-pathname
  * @GetMapping on StudentController.getStudents - implies this will be the method used to serve GET requests.
  *
@@ -64,7 +64,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Autowired - am working this out: seems to imply that this bean should be instantiated BY-TYPE/DEFAULT, without need for the 'new' keyword - just like scalars.
  *
  * N-tier architecture:
- * API layer ( GET(=SELECT) PUT(=UPDATE) POST(=INSERT) DELETE(=DELETE) )
+ * API layer ( GET(=SELECT) PUT(=UPDATE) POST(=INSERT/ADD) DELETE(=DELETE) )
  * Service Layer
  * Data Access Layer
  *
