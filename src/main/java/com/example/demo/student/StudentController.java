@@ -12,7 +12,7 @@ import java.util.List;
  *
  * A bit much magic happening here for my comfort zone:
  * (1) This class must exist in a sub-package  of where the main 'DemoApplication' resides - or the services/API's it exposes (Get, etc) are not exposed on the internet...
- * (2) ... But, magically, these services are exposed without my having manually instantiated a concreten instance of the class.
+ * (2) ... But, magically, these services are exposed without my having manually instantiated a concrete instance of the class.
  * (3) And: note how the method 'getStudents()' could just have as easily been named 'x()': no one cares!
  *
  * NOTE that this tutorial does not go into the FORMS required for GET/POST/DELETE/PUT -

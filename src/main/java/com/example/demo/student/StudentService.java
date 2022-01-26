@@ -67,7 +67,7 @@ public class StudentService {
     @Transactional  // New annotation: means we don't need to use any JPQL code,
     // the method relies on setters from our Student ORM class.
     // THUS, because of the magical '@Transactional' annotation - we are spared the necessity of doing queries.
-    // @Transactional here [at the Service/business] layer causes "@Entity Student" to go into a managed state, so no queries or JPQL code is necessary. Learn more about @Transactional in this guy's spring-data-JPA course.
+    // @Transactional here [at the Service/business] layer causes "@Entity Student" to go into a managed state, so no queries or JPQL code is necessary. Learn more about @Transactional in this guy's spring-data-JPA course: https://www.youtube.com/watch?v=8SGI_XS5OPw
     public void updateStudent(Long studentId,
                               String name,
                               String email) {
