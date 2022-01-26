@@ -17,6 +17,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * API: StudentController.java
  * Logic: StudentService.java
  * Database Access: StudentRepository.java
+ .
+ .
+ .
+ 47:36 JPA Repository - Database Access: StudentRepository.java: we create a new @Repository interface StudentRepository - and get a miracle happening in StudentService::getStudents()
+ 52:22 SAVING STUDENTS - @Configuration StudentConfig class saves "Mariam" and "Alex" students to our database prior application run.
+ 58:52 @TRANSIENT
+ 1:03:04 - POST MAPPING - SAVE a NEW record to the database: send a POST request (with full info); check if EMAIL exsists; IF NOT - save to database!
+ 1:08:01 - WRITING BUSINESS LOGIC - we now IMPLEMENT the above business logic: check if the EMAIL for the added student exists: if it does - don't add it, instead: throw an exception.
+ 1:12:44 - TESTING POST REQUEST - test above business logic.
+ 1:15:36 - DELETING STUDENTS
+ 1:21:33 - EXERCISE - Use the PUT verb to UPDATE both 'name' & 'email' fields of a student.
+ 1:22:53 - SOLUTION [to the previous EXERCISE]
+ 1:27:57 - TESTING: this guy has a testing course.
+ 1:29:44 - PACKAGING AND RUNNING APPLICATION : take our API and produce a JAR to run multiple instances of our application.
+ 1:34:55 - NEXT STEPS
  * ----------------------
  * CRM base class: Student.java
  * Initial Config: StudentConfig.java

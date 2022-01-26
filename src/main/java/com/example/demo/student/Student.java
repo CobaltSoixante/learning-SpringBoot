@@ -4,23 +4,33 @@ import javax.persistence.*; // Make sure u always import this, so even if we swi
 import java.time.LocalDate;
 import java.time.Period;
 
+// In psql shell - to get a view of what is happening:
+// \c student
+// \d
+
 @Entity // for Hibernate
-@Table  // map this class to a table in our database
+@Table  // map this class to a table in our database: will CREATE a table in our database! ("create table student" in console log)
 public class Student {
+    // Mapping the Student class to a table in our database:
+    // AW: What can I say: the following annotations are a bit abstruse/obscure...
+    // ... Obviously this is for the ORM/Hibernate level.
+    // See the guy's INITIAL youtubes about JPA/postgres, I guess - to make more sense of all this.
     @Id
-    @SequenceGenerator(
+    @SequenceGenerator( // "Hibernate: create sequence student_sequence start 1 increment 1" in console log.
             name = "student_sequence",
             sequenceName = "student_sequence",
-            allocationSize = 1
+            allocationSize = 1  // "increment 1" in console log.
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
-    private Long id;
+    private Long id;    // "primary key" for "create table student" in console log
     private String name;
     private String email;
     private LocalDate dob;
+
+    //@Transient // @Transient means this field DOES NOT need to be a field in our database. // we're gonna get rid of this field: is calculated from 'dob'
     //private int age;
 
     @Transient  // This is NOT a field in our database: it is a field we calculate in our class.

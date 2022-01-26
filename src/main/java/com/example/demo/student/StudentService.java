@@ -15,20 +15,21 @@ import java.util.Optional;
  * Contains stuff for our Service (business logic) LAYER (in the N-Tier API-Service-DataAccess hierarchy).
  *
  */
-//@Component  // tell Spring that this is a bean
+//@Component  // tell Spring that this is a BEAN - a class that MUST be instantiated when used (much like a typical scalar, I guess)
 @Service    // EXACTLY like saying '@Component', but - for readability - makes it clear the this is a "Service"  class in our N-Tier hierarchy.
 public class StudentService {
 
     private final StudentRepository studentRepository;
 
-    @Autowired
-    // I think that 'Autowired' implies a 'new' tho the constructor parameters (much like scalar variables are implicitly initializae to default values).
+    @Autowired  // facilitates dependency-injection [into StudentController]. (50:44/1:37:30)
+    // I think that 'Autowired' implies a 'new' to the constructor parameters (much like scalar variables are implicitly initialized to default values).
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
     public List<Student> getStudents() {
-        return studentRepository.findAll();
+        // (51:00/1:37:30)
+        return studentRepository.findAll(); // Spring Data JPA magic: we didn't need to implement .findall or anything in StudentRepository class (51:30)
 /*
         return List.of(
                 new Student(
@@ -49,7 +50,7 @@ public class StudentService {
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
-        studentRepository.save(student);
+        studentRepository.save(student);    // If student is not present in table - we save it. :-)
         System.out.println(student);
     }
 
@@ -66,6 +67,7 @@ public class StudentService {
     @Transactional  // New annotation: means we don't need to use any JPQL code,
     // the method relies on setters from our Student ORM class.
     // THUS, because of the magical '@Transactional' annotation - we are spared the necessity of doing queries.
+    // @Transactional here [at the Service/business] layer causes "@Entity Student" to go into a managed state, so no queries or JPQL code is necessary. Learn more about @Transactional in this guy's spring-data-JPA course.
     public void updateStudent(Long studentId,
                               String name,
                               String email) {
@@ -80,7 +82,7 @@ public class StudentService {
                 name.length() > 0 &&
                 !Objects.equals(student.getName(), name)
         ) {
-            student.setName(name);
+            student.setName(name);  // Update student name
         }
 
         if (email != null &&
@@ -92,7 +94,7 @@ public class StudentService {
             if (studentOptional.isPresent()) {
                 throw new IllegalStateException("email taken");
             }
-            student.setEmail(email);
+            student.setEmail(email);    // Update student email.
         }
     }
 }

@@ -27,11 +27,9 @@ public class StudentController {
 
 	private final StudentService studentService;
 
-	@Autowired	// Spring will automatically instantiate the constructor parameter so everything can work.
-	// But: for this the class StudentService must be annotated with '@Component' to make it a bean.
-	public StudentController(StudentService studentService) {
-		this.studentService = studentService;
-	}
+	@Autowired	// Spring will automatically instantiate the constructor studentService PARAMETER so everything can work.
+	// But: for this the class StudentService must be annotated with '@Component' to make it a bean (or: @Service: same thing but more readable).
+	public StudentController(StudentService studentService) { this.studentService = studentService; }	// Our controller/API constructor.
 
 	/*
  	 * to test: from POSTMAN - 'GET' with path:
@@ -57,7 +55,7 @@ public class StudentController {
 	 * so I don't test this within Intellij, I use "POSTMAN" with following stuff:
 	 * POST
 	 * localhost:8080/api/v1/student
-	 * JSON (application/json)
+	 * (*) raw ---- JSON (application/json)
 	  {
 	  	"name": "Bilal",
 	  	"email" : "bilal.ahmed@gmail.com",
@@ -108,7 +106,7 @@ public class StudentController {
 	@PutMapping(path = "{studentId}")
 	public void updateStudent(
 			@PathVariable("studentId") Long studentId,
-			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String name,	// presumably required=false means that this can have a 'null' value.
 			@RequestParam(required = false) String email
 	)
 	//@PathVariable means we are grabbing the path variable.
